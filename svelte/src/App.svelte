@@ -25,6 +25,8 @@
     score += e.detail.value
     storyIndex += 1
   }
+
+  let yourName = ""
 </script>
 
 <main>
@@ -46,7 +48,9 @@
     <h1>Do you like pizza? Score: {pizzaScore}</h1>
     <PizzaButtons buttons={pizzaButtons} on:click={(e) => { pizzaScore += e.detail.value }} />
 
-    <h1>{smileySays}</h1>
+    <input type="text" bind:value={yourName}>
+
+    <h1>{yourName}, {smileySays}</h1>
     <Face index={2} />
     Score : {score}
     <PizzaButtons {buttons} on:click={clickHandler} />
