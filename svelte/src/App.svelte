@@ -18,12 +18,23 @@
 
   let score = 0;
   let storyIndex = 0;
-  $: smileySays = story[storyIndex].smileySays
-  $: buttons = story[storyIndex].buttons;
+  $: question = story[storyIndex]
+  $: smileySays = question.end ? finalMessage() : question.smileySays
+  $: buttons = question.buttons;
 
   function clickHandler(e) {
     score += e.detail.value
     storyIndex += 1
+  }
+
+  function finalMessage() {
+    if (score > 0) {
+      return question.end.nice
+    } else if (score < 0) {
+      return question.end.mean
+    } else {
+      return question.end.neutral
+    }
   }
 
   let yourName = ""
