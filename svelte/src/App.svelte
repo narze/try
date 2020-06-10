@@ -2,9 +2,17 @@
   import Face from "./Face.svelte"
   import Container from "./Container.svelte";
   import Buttons from "./Buttons.svelte";
+  import PizzaButtons from "./PizzaButtons.svelte";
 	export let name;
 
   let say = false;
+
+  const buttons = [
+      {value: 0,  text: 'ummmmmm......'},
+      {value: 1,  text: 'I sure do!'},
+      {value: -2, text: 'gross!'}
+  ]
+  let score = 0;
 </script>
 
 <main>
@@ -21,6 +29,9 @@
     {#each [0, 1, 2, 3] as index}
       <Face {index} size={(index + 1) * 3} />
     {/each}
+
+    <h1>Do you like pizza? Score: {score}</h1>
+    <PizzaButtons {buttons} on:click={(e) => { score += e.detail }} />
   </Container>
 </main>
 
