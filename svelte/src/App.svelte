@@ -4,14 +4,11 @@
 	export let name;
 
   let say = false;
-
-  setTimeout(() => {
-    say = true;
-  }, 1000)
 </script>
 
 <main>
   <Container>
+    <button on:click={() => { say = true }}>Show</button>
 
     {#if say}
       <h1>Hello {name}!</h1>
