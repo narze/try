@@ -31,7 +31,7 @@
     {/each}
 
     <h1>Do you like pizza? Score: {score}</h1>
-    <PizzaButtons {buttons} on:click={(e) => { score += e.detail }} />
+    <PizzaButtons {buttons} on:click={(e) => { score += e.detail.value }} />
   </Container>
 </main>
 

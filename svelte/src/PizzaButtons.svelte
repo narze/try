@@ -6,7 +6,7 @@
 </script>
 
 {#each buttons as button}
-  <button on:click={() => dispatch("click", button.value)}>
+  <button on:click={() => dispatch("click", { value: button.value })}>
     {button.text}
   </button>
 {/each}
