@@ -17,9 +17,10 @@
   let pizzaScore = 0;
 
   let score = 0;
+  let storyIndex = 0;
   $: smileySays = 'Hi there, your score is: ' + score;
-  $: if (score < -4) smileySays = 'Wow your score is low!'
-  let buttons = story[0].buttons;
+  $: smileySays = story[storyIndex].smileySays
+  $: buttons = story[storyIndex].buttons;
 </script>
 
 <main>
@@ -43,7 +44,11 @@
 
     <h1>{smileySays}</h1>
     <Face index={2} />
-    <PizzaButtons {buttons} on:click={(e) => {score += e.detail.value}} />
+    Score : {score}
+    <PizzaButtons {buttons} on:click={(e) => {
+      score += e.detail.value
+      storyIndex += 1
+    }} />
   </Container>
 </main>
 
