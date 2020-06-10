@@ -2,16 +2,27 @@
   import Face from "./Face.svelte"
   import Container from "./Container.svelte";
 	export let name;
+
+  let say = false;
+
+  setTimeout(() => {
+    say = true;
+  }, 1000)
 </script>
 
 <main>
   <Container>
-    <h1>Hello {name}!</h1>
-    <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 
-    <Face />
-    <Face size="4" index="1" />
-    <Face size="6" index="2" />
+    {#if say}
+      <h1>Hello {name}!</h1>
+      <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+
+      <Face />
+      <Face size="4" index="1" />
+      <Face size="6" index="2" />
+    {:else}
+      ...
+    {/if}
   </Container>
 </main>
 
