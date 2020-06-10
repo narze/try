@@ -1,15 +1,18 @@
 <script>
   import Face from "./Face.svelte"
+  import Container from "./Container.svelte";
 	export let name;
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+  <Container>
+    <h1>Hello {name}!</h1>
+    <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 
-  <Face />
-  <Face size="4" index="1" />
-  <Face size="6" index="2" />
+    <Face />
+    <Face size="4" index="1" />
+    <Face size="6" index="2" />
+  </Container>
 </main>
 
 <style>
@@ -32,4 +35,14 @@
 			max-width: none;
 		}
 	}
+
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(body, html) {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
 </style>
