@@ -16,13 +16,13 @@
     {#if say}
       <h1>Hello {name}!</h1>
       <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-
-      <Face />
-      <Face size="4" index="1" />
-      <Face size="6" index="2" />
     {:else}
       ...
     {/if}
+
+    {#each [0, 1, 2, 3] as index}
+      <Face {index} size={(index + 1) * 3} />
+    {/each}
   </Container>
 </main>
 
