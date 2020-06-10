@@ -9,7 +9,7 @@
 
 <main>
   <Container>
-    <Buttons on:show={() => { say = true }} on:hide={() => { say = false }}></Buttons>
+    <Buttons on:click={(e) => { say = e.detail }}></Buttons>
 
     {#if say}
       <h1>Hello {name}!</h1>

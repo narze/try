@@ -3,10 +3,10 @@
   const dispatch = createEventDispatcher();
 </script>
 
-<button on:click={() => dispatch("show")}>
+<button on:click={() => dispatch("click", true)}>
   Show
 </button>
-<button on:click={() => dispatch("hide")}>
+<button on:click={() => dispatch("click", false)}>
   Hide
 </button>
 
