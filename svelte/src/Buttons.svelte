@@ -1,5 +1,13 @@
-<button on:click>
-  <slot></slot>
+<script>
+  import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
+</script>
+
+<button on:click={() => dispatch("show")}>
+  Show
+</button>
+<button on:click={() => dispatch("hide")}>
+  Hide
 </button>
 
 <style>

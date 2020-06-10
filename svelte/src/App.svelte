@@ -1,7 +1,7 @@
 <script>
   import Face from "./Face.svelte"
   import Container from "./Container.svelte";
-  import Button from "./Button.svelte";
+  import Buttons from "./Buttons.svelte";
 	export let name;
 
   let say = false;
@@ -9,7 +9,7 @@
 
 <main>
   <Container>
-    <Button on:click={() => { say = true }}>Show</Button>
+    <Buttons on:show={() => { say = true }} on:hide={() => { say = false }}></Buttons>
 
     {#if say}
       <h1>Hello {name}!</h1>
