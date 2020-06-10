@@ -18,9 +18,13 @@
 
   let score = 0;
   let storyIndex = 0;
-  $: smileySays = 'Hi there, your score is: ' + score;
   $: smileySays = story[storyIndex].smileySays
   $: buttons = story[storyIndex].buttons;
+
+  function clickHandler(e) {
+    score += e.detail.value
+    storyIndex += 1
+  }
 </script>
 
 <main>
@@ -45,10 +49,7 @@
     <h1>{smileySays}</h1>
     <Face index={2} />
     Score : {score}
-    <PizzaButtons {buttons} on:click={(e) => {
-      score += e.detail.value
-      storyIndex += 1
-    }} />
+    <PizzaButtons {buttons} on:click={clickHandler} />
   </Container>
 </main>
 
