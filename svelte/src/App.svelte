@@ -3,16 +3,23 @@
   import Container from "./Container.svelte";
   import Buttons from "./Buttons.svelte";
   import PizzaButtons from "./PizzaButtons.svelte";
+  import story from "./story";
+
 	export let name;
 
   let say = false;
 
-  const buttons = [
+  const pizzaButtons = [
       {value: 0,  text: 'ummmmmm......'},
       {value: 1,  text: 'I sure do!'},
       {value: -2, text: 'gross!'}
   ]
+  let pizzaScore = 0;
+
   let score = 0;
+  $: smileySays = 'Hi there, your score is: ' + score;
+  $: if (score < -4) smileySays = 'Wow your score is low!'
+  let buttons = story[0].buttons;
 </script>
 
 <main>
@@ -26,12 +33,17 @@
       ...
     {/if}
 
+    <!--
     {#each [0, 1, 2, 3] as index}
       <Face {index} size={(index + 1) * 3} />
     {/each}
+    -->
+    <h1>Do you like pizza? Score: {pizzaScore}</h1>
+    <PizzaButtons buttons={pizzaButtons} on:click={(e) => { pizzaScore += e.detail.value }} />
 
-    <h1>Do you like pizza? Score: {score}</h1>
-    <PizzaButtons {buttons} on:click={(e) => { score += e.detail.value }} />
+    <h1>{smileySays}</h1>
+    <Face index={2} />
+    <PizzaButtons {buttons} on:click={(e) => {score += e.detail.value}} />
   </Container>
 </main>
 
