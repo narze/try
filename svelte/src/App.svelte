@@ -23,8 +23,13 @@
   $: buttons = question.buttons;
 
   function clickHandler(e) {
-    score += e.detail.value
-    storyIndex += 1
+    if (e.detail.value === "reset") {
+      storyIndex = score = 0
+      say = false
+    } else {
+      score += e.detail.value
+      storyIndex += 1
+    }
   }
 
   function finalMessage() {
